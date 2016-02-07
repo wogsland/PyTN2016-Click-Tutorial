@@ -1,20 +1,13 @@
 import click
 
 @click.command(name='pytn')
-@click.option('--single', '-s')
-@click.option('--multi',  multiple=True)
-@click.option('--enable-feature/--no-enable-feature')
-@click.option('--flag',  is_flag=True)
-@click.option('--verbose', '-v',  count=True)
-def cli(single, multi, enable_feature, flag, verbose):
+@click.argument('names', nargs= -1)
+def cli(names):
     """
     Output a greeting to PyTennessee!
     """
-    click.echo("single: {0}".format(single))
-    for m in multi:
-        click.echo("multi: {0}".format(m))
-    click.echo("enable_feature: {0}".format(enable_feature))
-    click.echo("flag: {0}".format(flag))
-    click.echo("verbose: {0}".format(verbose))
+    for name in names:
+        click.echo("name: {0}".format(name))
+
 if __name__ == '__main__':
     cli()
